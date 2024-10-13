@@ -12,7 +12,9 @@ class PetsuppliesDetailsView extends StatelessWidget {
         return PetsuppliesDetailsViewmodel();
       },
       builder: (context, viewModel, child) {
-        return Scaffold();
+        return Scaffold(
+          appBar: AppBar(),
+        );
       },
     );
   }

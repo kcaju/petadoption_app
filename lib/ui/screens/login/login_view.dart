@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:petadpotion_app/constants/app_colors.dart';
 import 'package:petadpotion_app/constants/assets.gen.dart';
+// import 'package:petadpotion_app/constants/fonts.gen.dart';
 import 'package:petadpotion_app/ui/screens/login/login_viewmodel.dart';
+import 'package:petadpotion_app/ui/screens/signup/signup_view.dart';
 import 'package:stacked/stacked.dart';
 
 class LoginView extends StatelessWidget {
@@ -10,174 +12,254 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<LoginViewmodel>.reactive(
-      onViewModelReady: (viewModel) {
-        viewModel.login();
-      },
       viewModelBuilder: () {
         return LoginViewmodel();
       },
       builder: (context, viewModel, child) {
         return Scaffold(
-          backgroundColor: Palette.blue5,
-          appBar: AppBar(
-            backgroundColor: Colors.transparent,
-          ),
-          body: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Form(
-                key: viewModel.formkey,
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Welcome to Pet Haus",
-                          style: TextStyle(
-                              color: Palette.mainblack,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 20),
-                        ),
-                        // Image.asset(
-                        //   "assets/images/bird.gif",
-                        //   height: 100,
-                        //   width: 100,
-                        // )
-                      ],
-                    ),
-                    Stack(
-                      children: [
-                        SizedBox(
-                          height: 450,
-                          width: 800,
-                        ),
-                        Positioned(
-                          bottom: 32,
-                          left: 0,
-                          right: 0,
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 15),
-                            height: 230,
-                            width: 400,
-                            decoration: BoxDecoration(
-                              color: Palette.mainWhite,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                TextFormField(
-                                  controller: viewModel.name,
-                                  validator: (value) {
-                                    if (viewModel.name.text.isNotEmpty) {
-                                      return null;
-                                    } else {
-                                      return "Enter your name";
-                                    }
-                                  },
-                                  decoration: InputDecoration(
-                                      border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10)),
-                                      hintText: "Enter your Name",
-                                      label: Text(
-                                        "Name",
-                                        style: TextStyle(
-                                            color: Palette.mainblack
-                                                .withOpacity(0.5),
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
+            extendBodyBehindAppBar: true,
+            resizeToAvoidBottomInset: false,
+            // backgroundColor: Palette.blue5,
+            // appBar: AppBar(
+            //   centerTitle: true,
+            //   leading: Icon(null),
+            //   backgroundColor: Colors.transparent,
+            //   title: Text(
+            //     "Welcome to Pet Haus",
+            //     style: TextStyle(
+            //         color: Palette.mainblack,
+            //         fontWeight: FontWeight.w700,
+            //         fontSize: 20),
+            //   ),
+            // ),
+            body: Container(
+              height: double.infinity,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: Assets.images.bg.image(fit: BoxFit.cover).image)),
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 50, horizontal: 10),
+                  child: Form(
+                    key: viewModel.formkey,
+                    child: SizedBox(
+                      height: MediaQuery.sizeOf(context).height,
+                      child: PageView(
+                        controller: viewModel
+                            .pageController, // Add a PageController to manage pages
+                        children: [
+                          Column(
+                            children: [
+                              Text(
+                                "Sign In to your account",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 28),
+                              ),
+                              Stack(
+                                children: [
+                                  SizedBox(
+                                    height: 450,
+                                    width: 800,
+                                  ),
+                                  Positioned(
+                                    bottom: 32,
+                                    left: 0,
+                                    right: 0,
+                                    child: Container(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 10, vertical: 15),
+                                      height: 230,
+                                      // width: 400,
+                                      decoration: BoxDecoration(
+                                        gradient: LinearGradient(
+                                            begin: Alignment.centerLeft,
+                                            colors: [
+                                              Palette.blueGrey,
+                                              Palette.mainWhite,
+                                              Palette.blueGrey
+                                            ]),
+                                        borderRadius: BorderRadius.circular(10),
                                       ),
-                                      hintStyle: TextStyle(
-                                          color:
-                                              Palette.grey.withOpacity(0.5))),
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                TextFormField(
-                                  controller: viewModel.password,
-                                  validator: (value) {
-                                    if (viewModel.password.text.isNotEmpty &&
-                                        value!.length == 10) {
-                                      return null;
-                                    } else {
-                                      return "Enter your phone number";
-                                    }
-                                  },
-                                  decoration: InputDecoration(
-                                      border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10)),
-                                      hintText: "Enter your Phone Number",
-                                      label: Text(
-                                        "Phone Number",
-                                        style: TextStyle(
-                                            color: Palette.mainblack
-                                                .withOpacity(0.5),
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          TextFormField(
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold),
+                                            controller: viewModel.email,
+                                            validator: (value) {
+                                              if (value != null &&
+                                                  value.isNotEmpty &&
+                                                  value.contains("@")) {
+                                                return null;
+                                              } else {
+                                                return "Enter email";
+                                              }
+                                            },
+                                            decoration: InputDecoration(
+                                              border: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          10)),
+                                              label: Text(
+                                                "Email",
+                                                style: TextStyle(
+                                                    color: Palette.mainblack
+                                                        .withOpacity(0.5),
+                                                    fontSize: 20,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 20,
+                                          ),
+                                          TextFormField(
+                                            controller: viewModel.password,
+                                            obscureText: true,
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold),
+                                            validator: (value) {
+                                              if (value != null &&
+                                                  value.length >= 6) {
+                                                return null;
+                                              } else {
+                                                return "Enter password with atleast 6 charaters";
+                                              }
+                                            },
+                                            decoration: InputDecoration(
+                                              suffixIcon: Icon(
+                                                Icons.visibility_off,
+                                                color: Palette.mainblack,
+                                              ),
+                                              border: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          10)),
+                                              label: Text(
+                                                "Password",
+                                                style: TextStyle(
+                                                    color: Palette.mainblack
+                                                        .withOpacity(0.5),
+                                                    fontSize: 20,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ),
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              Text(
+                                                "Don't have an account?",
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 15,
+                                                    color: Palette.mainblack),
+                                              ),
+                                              SizedBox(
+                                                width: 5,
+                                              ),
+                                              GestureDetector(
+                                                onTap: () {
+                                                  viewModel.SignUp();
+                                                },
+                                                child: Text(
+                                                  " SignUp",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 17,
+                                                      color: Palette.green),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ],
                                       ),
-                                      hintStyle: TextStyle(
-                                          color:
-                                              Palette.grey.withOpacity(0.5))),
-                                )
-                              ],
-                            ),
+                                    ),
+                                  ),
+                                  Positioned(
+                                    right: 100,
+                                    top: 0,
+                                    child: Assets.images.logindog
+                                        .image(height: 300),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              viewModel.isLoading
+                                  ? CircularProgressIndicator()
+                                  : InkWell(
+                                      onTap: () {
+                                        viewModel.toSignIn(
+                                            email: viewModel.email.text,
+                                            pass: viewModel.password.text,
+                                            context: context);
+                                      },
+                                      child: Container(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 110),
+                                        height: 60,
+                                        width: 350,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Assets.images.paws
+                                                .image(height: 20),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                            Text(
+                                              "Sign In",
+                                              style: TextStyle(
+                                                  // fontFamily: FontFamily.barlow,
+                                                  color: Palette.mainblack,
+                                                  fontSize: 22,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                            Assets.images.paws
+                                                .image(height: 20),
+                                          ],
+                                        ),
+                                        decoration: BoxDecoration(
+                                            gradient: LinearGradient(
+                                                begin: Alignment.centerLeft,
+                                                colors: [
+                                                  Palette.blueGrey,
+                                                  Palette.mainWhite,
+                                                  Palette.blueGrey
+                                                ]),
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                      ),
+                                    ),
+                            ],
                           ),
-                        ),
-                        Positioned(
-                          right: 100,
-                          top: 0,
-                          child: Assets.images.logindog.image(height: 300),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        viewModel.loginValidation();
-                      },
-                      child: Container(
-                        padding: EdgeInsets.symmetric(horizontal: 110),
-                        height: 60,
-                        width: 350,
-                        child: Row(
-                          children: [
-                            Assets.images.paws.image(height: 20),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              "Login",
-                              style: TextStyle(
-                                  color: Palette.mainblack,
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Assets.images.paws.image(height: 20),
-                          ],
-                        ),
-                        decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                                begin: Alignment.centerLeft,
-                                colors: [Palette.primary, Palette.blueGrey]),
-                            borderRadius: BorderRadius.circular(10)),
+                          SignupView(viewmodel: viewModel),
+                        ],
                       ),
                     ),
-                  ],
+                  ),
                 ),
               ),
-            ),
-          ),
-        );
+            ));
       },
     );
   }

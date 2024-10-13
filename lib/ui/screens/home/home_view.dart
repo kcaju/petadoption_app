@@ -19,11 +19,11 @@ class HomeView extends StatelessWidget {
       },
       builder: (context, viewModel, child) {
         return DefaultTabController(
-          length: 4,
+          length: 3,
           child: Scaffold(
-            backgroundColor: Palette.mainWhite,
+            backgroundColor: Palette.fourth,
             appBar: AppBar(
-              backgroundColor: Palette.mainWhite,
+              backgroundColor: Palette.fourth,
 
               // leading: IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
               centerTitle: true,
@@ -155,17 +155,17 @@ class HomeView extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Tab(
-                        text: "Rabbits",
-                        icon: ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: Container(
-                            width: 80,
-                            height: 50,
-                            child: Assets.images.rab.image(fit: BoxFit.cover),
-                          ),
-                        ),
-                      ),
+                      // Tab(
+                      //   text: "Rabbits",
+                      //   icon: ClipRRect(
+                      //     borderRadius: BorderRadius.circular(10),
+                      //     child: Container(
+                      //       width: 80,
+                      //       height: 50,
+                      //       child: Assets.images.rab.image(fit: BoxFit.cover),
+                      //     ),
+                      //   ),
+                      // ),
                     ],
                   ),
                   Expanded(
@@ -173,7 +173,7 @@ class HomeView extends StatelessWidget {
                     DogView(),
                     CatView(),
                     BirdView(),
-                    RabbitView()
+                    // RabbitView()
                   ])),
                 ],
               ),

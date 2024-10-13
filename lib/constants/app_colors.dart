@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 abstract class Palette {
   static const Color primary = Color(0xffFCE900);
   static const Color green = Color(0xff3F704D);
+  static const Color green1 = Color(0xff80EF80);
   static const Color mainblack = Color(0xff000000);
   static const Color mainWhite = Color(0xffFFFFFF);
   static const Color yellow = Colors.yellow;
@@ -18,6 +19,12 @@ abstract class Palette {
   static const Color blue3 = Color(0xff282B59);
   static const Color blue4 = Color(0xff494C8C);
   static const Color blue5 = Color(0xff2E4052);
+
+  //colorhunt pattern
+  static const Color first = Color(0xff393B44);
+  static const Color third = Color(0xffC8C6A7);
+  static const Color second = Color(0xffA6F6F1);
+  static const Color fourth = Color(0xffC9D6DF);
 
   static const Color scaffoldBackgroundColor = Color(0xffFFFFFF);
 }

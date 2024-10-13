@@ -55,6 +55,12 @@ class $AssetsFontsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/bg.jpg
+  AssetGenImage get bg => const AssetGenImage('assets/images/bg.jpg');
+
+  /// File path: assets/images/bgcover.jpg
+  AssetGenImage get bgcover => const AssetGenImage('assets/images/bgcover.jpg');
+
   /// File path: assets/images/bird1.jpg
   AssetGenImage get bird1 => const AssetGenImage('assets/images/bird1.jpg');
 
@@ -63,6 +69,13 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/cat1.jpg
   AssetGenImage get cat1 => const AssetGenImage('assets/images/cat1.jpg');
+
+  /// File path: assets/images/coverimg.jpg
+  AssetGenImage get coverimg =>
+      const AssetGenImage('assets/images/coverimg.jpg');
+
+  /// File path: assets/images/cver.jpg
+  AssetGenImage get cver => const AssetGenImage('assets/images/cver.jpg');
 
   /// File path: assets/images/dog.jpg
   AssetGenImage get dog => const AssetGenImage('assets/images/dog.jpg');
@@ -99,11 +112,19 @@ class $AssetsImagesGen {
   /// File path: assets/images/rab.jpg
   AssetGenImage get rab => const AssetGenImage('assets/images/rab.jpg');
 
+  /// File path: assets/images/regcover.jpg
+  AssetGenImage get regcover =>
+      const AssetGenImage('assets/images/regcover.jpg');
+
   /// List of all assets
   List<AssetGenImage> get values => [
+        bg,
+        bgcover,
         bird1,
         care,
         cat1,
+        coverimg,
+        cver,
         dog,
         dog1,
         dog2,
@@ -114,7 +135,8 @@ class $AssetsImagesGen {
         petfud,
         petplus,
         profile1,
-        rab
+        rab,
+        regcover
       ];
 }
 

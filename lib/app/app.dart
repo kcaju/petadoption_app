@@ -4,10 +4,13 @@ import 'package:petadpotion_app/ui/screens/bottomnav/bottomnav_view.dart';
 import 'package:petadpotion_app/ui/screens/cats_list/catlist_view.dart';
 import 'package:petadpotion_app/ui/screens/dogs_list/doglist_view.dart';
 import 'package:petadpotion_app/ui/screens/get_start/getstart_view.dart';
+import 'package:petadpotion_app/ui/screens/home/home_view.dart';
+import 'package:petadpotion_app/ui/screens/intermediate_screen/intermediate_view.dart';
 import 'package:petadpotion_app/ui/screens/login/login_view.dart';
 import 'package:petadpotion_app/ui/screens/pet_details/petdetails_view.dart';
 import 'package:petadpotion_app/ui/screens/petsupplies_details/petsupplies_details_view.dart';
 import 'package:petadpotion_app/ui/screens/rabbit_list/rabbitlist_view.dart';
+import 'package:petadpotion_app/ui/screens/registration/registration_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -19,7 +22,9 @@ import '../ui/screens/splash/splash_view.dart';
   routes: [
     MaterialRoute(page: SplashView, initial: true),
     MaterialRoute(page: GetstartView),
+    MaterialRoute(page: IntermediateView),
     MaterialRoute(page: LoginView),
+    MaterialRoute(page: RegistrationView),
     MaterialRoute(page: BottomnavView),
     MaterialRoute(page: DoglistView),
     MaterialRoute(page: CatlistView),

@@ -1,14 +1,31 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:petadpotion_app/app/app.router.dart';
 import 'package:petadpotion_app/constants/app_colors.dart';
 import 'package:petadpotion_app/constants/assets.gen.dart';
 import 'package:petadpotion_app/ui/screens/pet_details/petdetails_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 
 class PetdetailsView extends StatelessWidget {
-  const PetdetailsView({super.key});
+  const PetdetailsView(
+      {super.key,
+      required this.name,
+      required this.color,
+      required this.owner,
+      required this.desc,
+      required this.sex,
+      required this.location,
+      required this.url,
+      required this.price,
+      required this.age});
+  final String name, color, owner, desc, sex, location, url;
+  final num price, age;
 
   @override
   Widget build(BuildContext context) {
+    final details =
+        ModalRoute.of(context)!.settings.arguments as PetdetailsViewArguments;
+
     return ViewModelBuilder<PetdetailsViewmodel>.reactive(
       viewModelBuilder: () {
         return PetdetailsViewmodel();
@@ -18,7 +35,11 @@ class PetdetailsView extends StatelessWidget {
           body: Container(
             height: MediaQuery.sizeOf(context).height,
             width: MediaQuery.sizeOf(context).width,
-            decoration: BoxDecoration(color: Palette.blue2),
+            decoration: BoxDecoration(
+                color: Palette.blue2,
+                image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: CachedNetworkImageProvider(details.url))),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -39,13 +60,13 @@ class PetdetailsView extends StatelessWidget {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "name",
+                                      details.name,
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 25),
                                     ),
                                     Text(
-                                      "price",
+                                      details.price.toString(),
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 25),
@@ -65,7 +86,7 @@ class PetdetailsView extends StatelessWidget {
                                       width: 5,
                                     ),
                                     Text(
-                                      "location",
+                                      details.location,
                                       style: TextStyle(
                                           fontWeight: FontWeight.w600,
                                           color: Palette.blueGrey,
@@ -98,7 +119,7 @@ class PetdetailsView extends StatelessWidget {
                                             height: 10,
                                           ),
                                           Text(
-                                            "data",
+                                            details.sex,
                                             style: TextStyle(
                                                 color: Palette.mainblack,
                                                 fontSize: 20,
@@ -119,7 +140,7 @@ class PetdetailsView extends StatelessWidget {
                                             MainAxisAlignment.center,
                                         children: [
                                           Text(
-                                            "Breed",
+                                            "Age",
                                             style: TextStyle(
                                                 color: Palette.green,
                                                 fontSize: 16,
@@ -129,7 +150,7 @@ class PetdetailsView extends StatelessWidget {
                                             height: 10,
                                           ),
                                           Text(
-                                            "data",
+                                            details.age.toString(),
                                             style: TextStyle(
                                                 color: Palette.mainblack,
                                                 fontSize: 20,
@@ -160,7 +181,7 @@ class PetdetailsView extends StatelessWidget {
                                             height: 10,
                                           ),
                                           Text(
-                                            "data",
+                                            details.color,
                                             style: TextStyle(
                                                 color: Palette.mainblack,
                                                 fontSize: 20,
@@ -203,7 +224,7 @@ class PetdetailsView extends StatelessWidget {
                                           height: 3,
                                         ),
                                         Text(
-                                          "Owner name",
+                                          details.owner,
                                           style: TextStyle(
                                               color: Palette.mainblack,
                                               fontSize: 16,
@@ -223,8 +244,7 @@ class PetdetailsView extends StatelessWidget {
                                   height: 18,
                                 ),
                                 //description
-                                Text(
-                                    " There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.")
+                                Text(details.desc)
                               ],
                             ),
                           ),

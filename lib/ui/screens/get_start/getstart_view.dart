@@ -15,6 +15,8 @@ class GetstartView extends StatelessWidget {
       builder: (context, viewModel, child) {
         return Scaffold(
           body: Container(
+            height: double.infinity,
+            width: double.infinity,
             decoration: BoxDecoration(
                 color: Colors.yellow,
                 image: DecorationImage(
@@ -42,11 +44,6 @@ class GetstartView extends StatelessWidget {
                   child: InkWell(
                     onTap: () {
                       viewModel.navigate();
-                      // Navigator.pushReplacement(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //       builder: (context) => LoginScreen(),
-                      //     ));
                     },
                     child: Container(
                       child: Center(

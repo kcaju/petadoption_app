@@ -108,7 +108,7 @@ class ProfileView extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () async {
-                    viewModel.navigate();
+                    viewModel.toSignOut();
                   },
                   child: ListTile(
                     leading: Icon(

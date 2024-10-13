@@ -1,8 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:petadpotion_app/constants/app_colors.dart';
 
 class CatTab extends StatelessWidget {
-  const CatTab({super.key});
+  const CatTab(
+      {super.key,
+      required this.name,
+      required this.location,
+      required this.url});
+  final String name, location, url;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +23,8 @@ class CatTab extends StatelessWidget {
                 height: 150,
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                        fit: BoxFit.cover, image: NetworkImage("")),
+                        fit: BoxFit.cover,
+                        image: CachedNetworkImageProvider(url)),
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(10),
                         topRight: Radius.circular(10),
@@ -45,7 +52,7 @@ class CatTab extends StatelessWidget {
           Row(
             children: [
               Text(
-                "name",
+                name,
                 style: TextStyle(
                     color: Palette.mainblack,
                     fontSize: 20,
@@ -66,7 +73,14 @@ class CatTab extends StatelessWidget {
               Icon(
                 Icons.pin_drop,
                 color: Palette.mainblack,
-              )
+              ),
+              Text(
+                location,
+                style: TextStyle(
+                    color: Palette.mainblack,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
             ],
           )
         ],
